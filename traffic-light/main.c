@@ -1,5 +1,4 @@
 // code traffic light tinkercad
-//
 
 // north
 const int RNORTH = 13;
@@ -21,66 +20,56 @@ const int REAST = 4;
 const int YEAST = 3;
 const int GEAST = 2;
 
-// void light(int red, int yellow, int green){
-//   digitalWrite(RNORTH, HIGH);
-//   delay(3000);
-//   digitalWrite(RNORTH, LOW);
-//
-//   for (int i=0;i<3;i++){
-//    digitalWrite(YNORTH, HIGH);
-//    delay(500);
-//    digitalWrite(YNORTH, LOW);
-//    delay(500);
-//   }
-//
-//   digitalWrite(GNORTH, HIGH);
-//   delay(3000);
-//   digitalWrite(GNORTH, LOW);
-// }
-
-void setup(){
-  pinMode(RNORTH, OUTPUT);
-  pinMode(YNORTH, OUTPUT);
-  pinMode(GNORTH, OUTPUT);
-}
-
-void loop(){
+void light(int red, int yellow, int green){
   digitalWrite(REAST, HIGH);
   digitalWrite(RSOUTH, HIGH);
   digitalWrite(RWEST, HIGH);
   digitalWrite(RNORTH, HIGH);
   delay(3000);
-  digitalWrite(RNORTH, LOW);
-  
+  digitalWrite(red, LOW);
+
   for (int i=0;i<3;i++){
-   digitalWrite(YNORTH, HIGH);
+   digitalWrite(yellow, HIGH);
    delay(500);
-   digitalWrite(YNORTH, LOW);
+   digitalWrite(yellow, LOW);
    delay(500);
   }
-  
-  digitalWrite(GNORTH, HIGH);
-  delay(3000);
-  digitalWrite(GNORTH, LOW);
 
-digitalWrite(REAST, HIGH);
-  digitalWrite(REAST, HIGH);
-  digitalWrite(REAST, HIGH);
-  digitalWrite(RNORTH, HIGH);
+  digitalWrite(green, HIGH);
   delay(3000);
-  digitalWrite(RNORTH, LOW);
-  
-  for (int i=0;i<3;i++){
-   digitalWrite(YNORTH, HIGH);
-   delay(500);
-   digitalWrite(YNORTH, LOW);
-   delay(500);
-  }
-  
-  digitalWrite(GNORTH, HIGH);
-  delay(3000);
-  digitalWrite(GNORTH, LOW);
+  digitalWrite(green, LOW);
+  digitalWrite(red, HIGH);
+}
 
+void setup(){
+  pinMode(RNORTH, OUTPUT);
+  pinMode(YNORTH, OUTPUT);
+  pinMode(GNORTH, OUTPUT);
 
+  pinMode(RWEST, OUTPUT);
+  pinMode(YWEST, OUTPUT);
+  pinMode(GWEST, OUTPUT);
+
+  pinMode(RSOUTH, OUTPUT);
+  pinMode(YSOUTH, OUTPUT);
+  pinMode(GSOUTH, OUTPUT);
+
+  pinMode(REAST, OUTPUT);
+  pinMode(YEAST, OUTPUT);
+  pinMode(GEAST, OUTPUT);
+}
+
+void loop(){
+    // north
+    light(RNORTH, YNORTH, GNORTH);
+
+    // west
+    light(RWEST, YWEST, GWEST);
+
+    // south
+    light(RSOUTH, YSOUTH, GSOUTH);
+
+    // east
+    light(REAST, YEAST, GEAST);
 
 }
