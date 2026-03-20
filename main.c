@@ -41,7 +41,7 @@ void light(int red, int yellow, int green){
   digitalWrite(RNORTH, HIGH);
 
   // mematikan lampu merah pada simpang 
-  delay(1000)
+  delay(1000);
   digitalWrite(red, LOW);
 
   // Menyalakan lampu kuning 
